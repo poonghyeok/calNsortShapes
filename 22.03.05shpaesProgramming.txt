@@ -1,0 +1,21 @@
+**git commit push까지 **
+
+일단 shapes 라는 interface를 만들자. == > 이렇게 글로 적는거보다 도형으로 hierachy 도식화 할 수 있는 프로그램 쓰면 좋겠다. (카카오에 그런거 있었던거 같은데 sql수업 들을 때)
+
+그리고 그걸 rectangle, circle, tiangle이 구현을 한다. (??근데 굳이 interface만 상속할 필요가 없다. 추상클래스를 상속받고 인터페이스를 구현하면 되니깐)
+
+	각 도형들은 너비, 높이, 둘레 중 몇가지를 가진다 +area, perimeter를 반드시 가진다. > 공통적으로 가진다 > super class가 가지고 있고 초기화를 고려해봐야 한다. 
+
+	각 도형들은 넓이와 둘레를 계산해야 한다. >> method사용 >> interface에서 지정하고 각 class에서 구현, 
+	코드를 더 효율적으로 할거면 각 도형다 method를 계산해주는 interface가 존재하는것이 좋은가. 
+		아니다. 이건 너무 단적인 면만 본 듯하다. 	
+	근데 넓이가 각 각 구하는 공식이 다르잖아. 
+	
+	sort() method는 그냥 main class에서 구현하면 되지 않나? abstract class의 배열이 있고 그 배열의 순서를 바꾸고 출력까지 하도록 근데 진짜 순서를 바꿀 것인지 출력할 떄만 바꿀 것인지
+	sortedPrint가 아니라 진짜 정렬을 하겠다는 sort()이니깐 진짜 순서를 바꾸자.  	'
+
+	double 이니깐 계산할 때 주의하자 double간 계산인데 int랑 섞이다보면 잘려서 int만 출력될 수 있으니깐.	
+
+	(??근데 interface도 구현을 해주어야 하는데 아무데나 구현해놓아도 상관이 없는건가? 일단ㄲ
+
+	toString도 abstract class안에 집어넣을 수 있을거같은데 >> 리팩토링에서 시도해보자 
