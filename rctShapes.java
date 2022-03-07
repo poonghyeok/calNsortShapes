@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class rctShapes {
 	
-	public static shapeProperties[] shapes = new shapeProperties[100];
-	public static int shapeNum = 0;
-	public static void main(String[] args) {
+	shapeProperties[] shapes = new shapeProperties[100];
+	int shapeNum = 0;
+	
+	public void mainCommand() {
 		
 		Scanner sc = new Scanner(System.in);
 		 
@@ -44,40 +45,76 @@ public class rctShapes {
 				 sc.close();
 				 System.out.println("system exit..! bye..!");
 				 System.exit(0);
+			 }else if(cmd.equals("sort")){
+				sorting(); 
+			 }else {
+				 System.out.println("wrong command...! try again...!");
 			 }
 		 }
 		
 	}
 	
-	public static void addRectangle(double r, double w, double h) {
-		shapes[shapeNum] = new rectangle(r,w,h);
-		shapeNum++;
+	public  void addRectangle(double r, double w, double h) {
+		this.shapes[shapeNum] = new rectangle(r,w,h);
+		this.shapeNum++;
 	}
 	
-	public static void addCircle(double r, double w, double h) {
-		shapes[shapeNum] = new circle(r,w,h);
-		shapeNum++;
+	public void addCircle(double r, double w, double h) {
+		this.shapes[shapeNum] = new circle(r,w,h);
+		this.shapeNum++;
 		
 	}
 	
-	public static void addTriangle(double r, double w, double h) {
-		shapes[shapeNum] = new triangle(r,w,h);
-		shapeNum++;
+	public void addTriangle(double r, double w, double h) {
+		this.shapes[shapeNum] = new triangle(r,w,h);
+		this.shapeNum++;
 	
 	}
 	
-	public static void show() {
+	public void show() {
 		for(int i = 0; i < shapeNum; i++) {
 			System.out.print((i+1) + ". ");
-			shapes[i].toStringSimple();
+			this.shapes[i].toStringSimple();
 		}
 	}
 	
-	public static void showDetail() {
+	public void showDetail() {
 		for(int i = 0; i < shapeNum; i++) {
 			System.out.print(i+". ");
-			shapes[i].toStringDetail();
+			this.shapes[i].toStringDetail();
 		}
 	}
+	
+	//create a function that make a list sorted by area descending.
+	public void sorting() {
+		System.out.println("==========================");
+		System.out.println("before sorting");
+		System.out.println("==========================");
+		this.showDetail();
+		
+		for(int i = 0; i < shapeNum; i++ ) {
+			for(int j = this.shapeNum -1; j > i; j--) {
+				if(this.shapes[j].area > this.shapes[j-1].area) {
+					shapeProperties tmp = this.shapes[j-1];
+					this.shapes[j-1] = this.shapes[j];
+					this.shapes[j] = tmp;	
+				}
+			}
+		}
+		
+		System.out.println("==========================");
+		System.out.println("after sorting");
+		System.out.println("==========================");
+		this.showDetail();
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		rctShapes rcts = new rctShapes();
+		rcts.mainCommand();
+	}
+	
+	
 	
 }

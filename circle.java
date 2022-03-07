@@ -15,7 +15,7 @@ public class circle extends shapeProperties{
 	};
 	
 	public double calPerimeter() {
-		return 2*(this.radius + Math.PI);
+		return 2*(this.radius * Math.PI);
 	};
 
 	public void toStringSimple() {
